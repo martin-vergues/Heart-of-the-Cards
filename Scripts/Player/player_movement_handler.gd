@@ -10,21 +10,26 @@ func _ready():
 	player = get_parent() as Player
 	if player == null:
 		push_error("MovementHandler must be a child of Player")
+		queue_free()
 
 func _process(delta):
 	if !enabled:
 		return
+	move(delta)
+
+func move(delta):
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("right"):
-		velocity.x += 1
-	if Input.is_action_pressed("left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("jump"):
-		velocity.y -= 1
+	#if Input.is_action_pressed("right"):
+		#velocity.x += 1
+	#if Input.is_action_pressed("left"):
+		#velocity.x -= 1
+	#if Input.is_action_pressed("jump"):
+		#velocity.y -= 1
+	velocity = Input.get_vector("left", "right", "up", "down")
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized()
-	handle_animation(velocity)
+		handle_animation(velocity)
 	player.velocity = velocity * speed
 	player.move_and_slide()
 

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyrbxj3habogm"]
+
+[ext_resource type="Script" uid="uid://4k2v8k5xxhou" path="res://Scenes/test_room.gd" id="1_3tvqv"]
+[ext_resource type="Texture2D" uid="uid://uaoahr0hhptt" path="res://Assets/castlemap.png" id="2_6idp7"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://Scenes/player.tscn" id="3_rx0dc"]
+[ext_resource type="PackedScene" uid="uid://bvpfl74oiluxj" path="res://Scenes/Cards/card_ui.tscn" id="4_afs4w"]
+
+[node name="TestRoom" type="Node2D"]
+script = ExtResource("1_3tvqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_6idp7")
+
+[node name="Player" parent="." instance=ExtResource("3_rx0dc")]
+z_index = 1
+position = Vector2(-2.9999998, 0.99999994)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(7.4999995, -2.4999998)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.8
+drag_top_margin = 0.8
+drag_right_margin = 0.8
+drag_bottom_margin = 0.8
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Card_UI" parent="CanvasLayer" instance=ExtResource("4_afs4w")]
+offset_left = -3.0
+offset_top = 1.0
+offset_right = -3.0
+offset_bottom = 1.0
+pat = NodePath("../../Player")

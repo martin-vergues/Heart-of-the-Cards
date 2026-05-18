@@ -1,0 +1,207 @@
+[gd_scene load_steps=28 format=3 uid="uid://bvpfl74oiluxj"]
+
+[ext_resource type="Script" uid="uid://b2bojt2tlankn" path="res://Scripts/Cards/card_ui.gd" id="1_2ndah"]
+[ext_resource type="PackedScene" uid="uid://q00tdscqwyvn" path="res://Scenes/Cards/card_display.tscn" id="2_7w5n5"]
+[ext_resource type="Texture2D" uid="uid://cq8ygdf37wans" path="res://Assets/Sprites/arcana.png" id="2_y8epe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ndah"]
+bg_color = Color(0.41310114, 0.39711264, 0.29361326, 1)
+corner_radius_top_right = 70
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb3y1"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(226, 17, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw1if"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(374, 17, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdxna"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(16, 209, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i0xj"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(158, 209, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6x0e"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(300, 209, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c8ti"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(442, 209, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ypf8"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(584, 209, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7amj8"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(16, 401, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3eeh"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(158, 401, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43oau"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(300, 401, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyfv0"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(442, 401, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h35ge"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(584, 401, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1jdh"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(16, 593, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyov8"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(158, 593, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_royf5"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(300, 593, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0iiy"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(442, 593, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s34b3"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(584, 593, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g47tm"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(16, 785, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lejx1"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(158, 785, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i21os"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(300, 785, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl0hc"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(442, 785, 136, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hm20"]
+atlas = ExtResource("2_y8epe")
+region = Rect2(584, 785, 136, 187)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dku0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb3y1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw1if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdxna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i0xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6x0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c8ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ypf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7amj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3eeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43oau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyfv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h35ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1jdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyov8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_royf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0iiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s34b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g47tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lejx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i21os")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl0hc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hm20")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Card_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2ndah")
+
+[node name="Card_array" type="Panel" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -3.0000002
+offset_top = 533.0
+offset_right = 705.0
+offset_bottom = 751.0
+scale = Vector2(0.7, 0.7)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ndah")
+
+[node name="Arcanum" type="AnimatedSprite2D" parent="Card_array"]
+position = Vector2(66, 105.714294)
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SpriteFrames_dku0f")
+
+[node name="Card 1" parent="Card_array" instance=ExtResource("2_7w5n5")]
+position = Vector2(174.00002, 131.7143)
+
+[node name="Card 2" parent="Card_array" instance=ExtResource("2_7w5n5")]
+position = Vector2(282, 131.7143)
+
+[node name="Card 3" parent="Card_array" instance=ExtResource("2_7w5n5")]
+position = Vector2(388, 131.7143)
+
+[node name="Card 4" parent="Card_array" instance=ExtResource("2_7w5n5")]
+position = Vector2(494, 131.7143)
+
+[node name="Card 5" parent="Card_array" instance=ExtResource("2_7w5n5")]
+position = Vector2(600, 131.7143)

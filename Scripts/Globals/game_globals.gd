@@ -16,4 +16,4 @@ func _process(delta: float) -> void:
 	pass
 
 #func start_game():
-	#TransitionManager.change_scene(Global.main_game_scene)
+	#TransitionManager.change_scene(Globals.main_game_scene)
