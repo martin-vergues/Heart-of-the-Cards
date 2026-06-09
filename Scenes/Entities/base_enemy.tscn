@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://buemghfrouhqw"]
+
+[ext_resource type="PackedScene" uid="uid://cy3fvno6qq00c" path="res://Scenes/Entities/base_entity.tscn" id="1_r2gkr"]
+[ext_resource type="Script" uid="uid://dr0tyjhdyq6qi" path="res://Scenes/Entities/base_enemy.gd" id="2_ahjfl"]
+[ext_resource type="Script" uid="uid://brl6f6aguep13" path="res://Scripts/Common/hurtboxComponent.gd" id="2_o6kgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6kgl"]
+
+[node name="Enemy" groups=["enemyside"] instance=ExtResource("1_r2gkr")]
+script = ExtResource("2_ahjfl")
+
+[node name="Hitbox_component" parent="." index="2"]
+team = 1
+
+[node name="HurtboxComponent" type="Area2D" parent="." index="3"]
+script = ExtResource("2_o6kgl")
+team = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("RectangleShape2D_o6kgl")
+
+[node name="Collision Box" parent="." index="5"]
+disabled = true
+
+[connection signal="on_dead" from="Health_component" to="." method="destroy"]

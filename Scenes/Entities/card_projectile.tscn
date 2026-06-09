@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctpu3etfep2g1"]
+
+[ext_resource type="PackedScene" uid="uid://d3u0fbg3qxrei" path="res://Scenes/Entities/base_proj.tscn" id="1_7w36c"]
+[ext_resource type="Script" uid="uid://bwlcou21nhvp1" path="res://Scripts/Attacks/card_projectile.gd" id="2_li866"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_li866"]
+size = Vector2(146, 103)
+
+[node name="Attack" instance=ExtResource("1_7w36c")]
+script = ExtResource("2_li866")
+
+[node name="Attack" parent="." index="0"]
+team = 0
+
+[node name="CollisionShape2D" parent="Attack" index="0"]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_li866")
+
+[node name="AttackAnimation" parent="." index="1"]
+rotation = 1.5707964
+animation = &"card_projectile"
+frame = 50

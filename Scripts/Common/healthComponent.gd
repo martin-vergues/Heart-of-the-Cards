@@ -6,7 +6,7 @@ class_name HealthComponent
 @export var health_bar: bool = true
 
 var _current_health: int = 0
-var immortal: bool = false
+@export var immortal: bool = false
 signal on_health_changed(current_health: int, max_health: int)
 signal on_damaged(amount: int)
 signal on_healed(amount: int)
@@ -20,6 +20,7 @@ func damage(amount: int) -> void:
 	if immortal:
 		return
 	on_damaged.emit(amount)
+	print(_current_health)
 	amount = min(amount, _current_health)
 	_current_health -= amount
 	if _current_health <= 0:

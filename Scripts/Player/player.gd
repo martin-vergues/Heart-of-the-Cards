@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed = 1000
-
+@export var muzzle : Marker2D
 
 var screen_size
 # Called when the node enters the scene tree for the first time.

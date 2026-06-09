@@ -5,11 +5,11 @@ class_name CardFunctions
 @export var player : Player
 
 var func_array: Array[Callable] = [
-	d,											#joker
+	d,										#joker
 	d, d, d, d, d, d, d, d, d, d, d, d, d,	#clubs
 	_spade_ace, _spade_two, _spade_three, _spade_four, d, _spade_six, d, d, d, d, d, d, d,	#spades
 	d, d, d, d, d, d, d, d, d, d, d, d, d,	#hearts
-	d, d, d, d, d, d, d, d, d, _diamond_ten, d, d, d	#diamonds
+	d, d, d, d, d, d, d, d, _diamond_nine, _diamond_ten, d, d, d	#diamonds
 ]
 
 func d(card: Card) -> bool: #dummy
@@ -19,8 +19,9 @@ func _spade_ace(card: Card) -> bool:
 	if Input.is_action_just_pressed("attack"):
 		var proj : Projectile = Projectile.new_projectile(card.potency, 6000, 1, true, 0, 0)
 		player.owner.add_child(proj)
-		proj.get_node("Sprite2D").frame = card.id
-		proj.transform = player.get_node("Muzzle").global_transform
+		#proj.get_node("AttackAnimation").animation = "card_projectile"
+		proj.get_node("AttackAnimation").frame = card.id
+		proj.transform = player.muzzle.global_transform
 		return true
 	return false
 
@@ -33,7 +34,7 @@ func _spade_two(card: Card) -> bool:
 		var pos = -100
 		for proj in array:
 			player.owner.add_child(proj)
-			proj.get_node("Sprite2D").frame = card.id
+			proj.get_node("AttackAnimation").frame = card.id
 			proj.transform = player.get_node("Muzzle").global_transform.translated_local(Vector2(0, pos))
 			pos += 200
 		return true
@@ -48,7 +49,7 @@ func _spade_three(card: Card) -> bool:
 
 		for proj in array:
 			player.owner.add_child(proj)
-			proj.get_node("Sprite2D").frame = card.id
+			proj.get_node("AttackAnimation").frame = card.id
 			proj.transform = player.get_node("Muzzle").global_transform
 			proj.rotation += rotation
 			rotation += 0.15
@@ -68,7 +69,7 @@ func _spade_six(card: Card) -> bool:
 		var pos = -30
 		for proj: Projectile in array:
 			player.owner.add_child(proj)
-			proj.get_node("Sprite2D").frame = card.id
+			proj.get_node("AttackAnimation").frame = card.id
 			proj.transform = player.get_node("Muzzle").global_transform
 			proj.rotation += rotation
 			proj.transform = proj.transform.looking_at(player.get_node("Muzzle").pos).translated(Vector2(100, 100))
@@ -80,25 +81,51 @@ func _spade_six(card: Card) -> bool:
 	return false
 
 #func _diamond_ace(card: Card) -> bool:
-	
+
+func _push_to_diamond_helper(card: Card):
+	#[card, player.muzzle.global_transform]
+	print("pushed")
+	_instantiate_diamond_helper().queue_attack(card, player.muzzle.global_transform)
+	pass
+
+func _instantiate_diamond_helper():
+	var diamond_helper
+	if (player.owner.get_node("Diamond_Helper") == null):
+		diamond_helper = preload("res://Scenes/Entities/diamond_summon.tscn").instantiate()
+		player.owner.add_child(diamond_helper)
+		diamond_helper.transform = player.global_transform
+		diamond_helper.get_node("Sprite").frame = 0
+		diamond_helper.get_node("Sprite").animation = "default"
+	else:
+		diamond_helper = player.owner.get_node("Diamond_Helper")
+	return diamond_helper.get_node("Behaviour_use_cards")
+
+func _diamond_nine(card: Card) -> bool:
+	if (Input.is_action_just_pressed("attack")):
+		_push_to_diamond_helper(card)
+		#spadeTenThread(card)
+		#get_parent().get_node("Thread_manager")._get_available_thread().start(flurry.bind(card))
+		return true
+	return false
 
 func _diamond_ten(card: Card) -> bool:
 	if (Input.is_action_just_pressed("attack")):
+		_push_to_diamond_helper(card)
 		#spadeTenThread(card)
-		get_parent().get_node("Thread_manager")._get_available_thread().start(flurry.bind(card))
+		#get_parent().get_node("Thread_manager")._get_available_thread().start(flurry.bind(card))
 		return true
 	return false
 
 func flurry(card: Card):
 	var array: Array[Projectile]
-	#var rotation = 1.55
-		
+	
 	for i in range(33):
 		array.push_back(Projectile.new_projectile(card.potency, 2000, 2, false, 0, 0))
-	var temp_transfo = player.global_transform
+	var temp_transfo = player.muzzle.transform
+	#player.get_node("Muzzle").global_transform
 	for proj in array:
 		player.owner.add_child(proj)
-		proj.get_node("Sprite2D").frame = card.id
+		proj.get_node("AttackAnimation").frame = card.id
 		#proj.transform = player.get_node("Muzzle").global_transform
 		proj.transform = temp_transfo
 		proj.rotate(randf_range(-1, +1))
@@ -117,7 +144,7 @@ func spiral_throw(card:Card):
 		for proj in array:
 			#player.owner.call_deferred("add_child", proj) # add_child(proj)
 			player.owner.add_child(proj)
-			proj.get_node("Sprite2D").frame = card.id
+			proj.get_node("AttackAnimation").frame = card.id
 			#proj.transform = player.get_node("Muzzle").global_transform
 			proj.transform = player.global_transform#player.get_node("Muzzle").global_transform
 			proj.rotation = rotation

@@ -1,6 +1,6 @@
 [gd_scene load_steps=112 format=3 uid="uid://c7dprunnp4k7j"]
 
-[ext_resource type="Script" uid="uid://bwlcou21nhvp1" path="res://Scripts/Common/projectile.gd" id="1_lgmb0"]
+[ext_resource type="Script" uid="uid://bwlcou21nhvp1" path="res://Scripts/Attacks/card_projectile.gd" id="1_lgmb0"]
 [ext_resource type="Texture2D" uid="uid://dq3qu5fklgjst" path="res://Assets/Sprites/Cards_updated.png" id="2_45j7b"]
 [ext_resource type="Texture2D" uid="uid://c76dquhb88gar" path="res://Assets/Sprites/cards_color.png" id="2_brpbx"]
 
@@ -763,6 +763,14 @@ animations = [{
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_lgmb0")
+speed = null
+lifetime = null
+bounces = null
+piercing = null
+faction = null
+team = null
+damage = null
+constant = null
 metadata/_custom_type_script = "uid://cxlqysh1v3glj"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

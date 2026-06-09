@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dajix358ts1kl"]
+
+[ext_resource type="PackedScene" uid="uid://cy3fvno6qq00c" path="res://Scenes/Entities/base_entity.tscn" id="1_dbp4g"]
+[ext_resource type="Texture2D" uid="uid://b5jciqqbo1dq3" path="res://Assets/Sprites/Eye.png" id="2_dbp4g"]
+[ext_resource type="Script" uid="uid://db2phbh50gbfc" path="res://diamond_summon.gd" id="3_55nak"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55nak"]
+atlas = ExtResource("2_dbp4g")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhpxx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55nak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Diamond_Helper" instance=ExtResource("1_dbp4g")]
+
+[node name="ColorRect" parent="." index="0"]
+visible = false
+
+[node name="Sprite" parent="." index="1"]
+visible = true
+z_index = 9
+sprite_frames = SubResource("SpriteFrames_dhpxx")
+
+[node name="Health_component" parent="." index="3"]
+immortal = true
+
+[node name="Behaviour_use_cards" type="Node" parent="." index="4"]
+script = ExtResource("3_55nak")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=13 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://cjvqm1qwpcrio" path="res://Scripts/Player/player.gd" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://com51nejpacqg" path="res://Assets/Sprites/Teriderp.png" id="2_vgqql"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://7kldr34imtu5" path="res://Scripts/Cards/card_collection.gd" id="7_3smsa"]
 [ext_resource type="Script" uid="uid://bh6m5bqtbhww1" path="res://Scripts/Cards/deck.gd" id="8_8erm5"]
 [ext_resource type="Script" uid="uid://bo16fq5pmiwpe" path="res://Scripts/Cards/card_functions.gd" id="8_f1ek2"]
-[ext_resource type="Script" uid="uid://dasqqrja4i8du" path="res://Scenes/muzzle.gd" id="9_f1ek2"]
 [ext_resource type="Script" uid="uid://cx0ar3xhw2a75" path="res://Scripts/Common/thread.gd" id="9_tx1dd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
@@ -37,6 +36,7 @@ animations = [{
 size = Vector2(90, 87.50001)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3smsa"]
+size = Vector2(90, 88)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -51,6 +51,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+z_index = 10
 sprite_frames = SubResource("SpriteFrames_2hs0m")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
@@ -60,7 +61,8 @@ position = Vector2(0, 2.3841858e-07)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_1jxqw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(-5.9604645e-08, -3.3881318e-21)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_3smsa")
 
@@ -86,9 +88,5 @@ noderef = NodePath("../Card_functions")
 
 [node name="Thread_manager" type="Node" parent="Card_collection"]
 script = ExtResource("9_tx1dd")
-
-[node name="Muzzle" type="Marker2D" parent="."]
-scale = Vector2(0.6, 0.6)
-script = ExtResource("9_f1ek2")
 
 [connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]

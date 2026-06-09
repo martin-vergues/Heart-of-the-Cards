@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy3fvno6qq00c"]
+
+[ext_resource type="Script" uid="uid://cxlqysh1v3glj" path="res://Scripts/Common/hitboxComponent.gd" id="1_8qmgw"]
+[ext_resource type="Script" uid="uid://c11msvmn3pw0w" path="res://Scripts/Common/healthComponent.gd" id="1_lkv7d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qmgw"]
+
+[node name="Character" type="CharacterBody2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+visible = false
+
+[node name="Hitbox_component" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_8qmgw")
+health_component = NodePath("../Health_component")
+team = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_component"]
+shape = SubResource("RectangleShape2D_8qmgw")
+
+[node name="Health_component" type="Node" parent="."]
+script = ExtResource("1_lkv7d")

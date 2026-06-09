@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyrbxj3habogm"]
+
+[ext_resource type="Script" uid="uid://4k2v8k5xxhou" path="res://Scripts/Levels/test_room.gd" id="1_kawet"]
+[ext_resource type="Texture2D" uid="uid://uaoahr0hhptt" path="res://Assets/castlemap.png" id="2_rlh2b"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://Scenes/Entities/player.tscn" id="3_ebf44"]
+[ext_resource type="Script" uid="uid://dasqqrja4i8du" path="res://Scripts/Player/muzzle.gd" id="4_ebf44"]
+[ext_resource type="PackedScene" uid="uid://bvpfl74oiluxj" path="res://Scenes/Cards/card_ui.tscn" id="4_xam02"]
+[ext_resource type="PackedScene" uid="uid://buemghfrouhqw" path="res://Scenes/Entities/base_enemy.tscn" id="5_rlh2b"]
+
+[node name="TestRoom" type="Node2D"]
+script = ExtResource("1_kawet")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_rlh2b")
+
+[node name="Player" parent="." node_paths=PackedStringArray("muzzle") instance=ExtResource("3_ebf44")]
+z_index = 1
+position = Vector2(-2.9999998, 0.99999994)
+muzzle = NodePath("Muzzle")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(7.4999995, -2.4999998)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.8
+drag_top_margin = 0.8
+drag_right_margin = 0.8
+drag_bottom_margin = 0.8
+
+[node name="Muzzle" type="Marker2D" parent="Player"]
+unique_name_in_owner = true
+scale = Vector2(0.6, 0.6)
+script = ExtResource("4_ebf44")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Card_UI" parent="CanvasLayer" instance=ExtResource("4_xam02")]
+offset_left = -3.0
+offset_top = 1.0
+offset_right = -3.0
+offset_bottom = 1.0
+pat = NodePath("../../Player")
+
+[node name="Enemy" parent="." instance=ExtResource("5_rlh2b")]
+position = Vector2(43, -114)

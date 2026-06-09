@@ -2,7 +2,7 @@ extends Area2D
 class_name HurtboxComponent
 
 var hitboxes : Array[HitboxComponent] = []
-@export var team: Globals.Team = Globals.Team.ENEMY
+@export var team: Globals.Team = Globals.Team.NEUTRAL
 @export var constant = false
 
 signal on_hurt(entity)

@@ -25,6 +25,12 @@ Debug="*res://Scripts/Globals/debug.gd"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+playerside=""
+enemyside=""
+neutral=""
+
 [input]
 
 left={
